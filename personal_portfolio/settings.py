@@ -22,9 +22,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'sgf45#$#$dsf$gsd@fg)ki!9$9p8@565p&v)-8y6+xa60**uac&q*6m*pko^&^_ig'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'asahipython.pythonanywhere.com',
+]
 
 # Application definition
 
@@ -130,3 +132,8 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
     MEDIA_ROOT
 ]
+
+try:
+    from .local_settings import *
+except ImportError:
+    print("Looks like no local setting file was available. You seem to be on Production")
